@@ -10,9 +10,6 @@ from config import *
 # dev mode gets data from local file
 dev = False
 
-# numbers of AC needed to recieve a balloon
-balloon_list = [2, 5, 8, 11, 12]
-
 df = pd.read_excel("teamInfo.xlsx")
 classroom = df['classroom']
 mention = classroom.replace(
@@ -76,7 +73,7 @@ class BalloonDoge(discord.Client):
     async def newAC(self, username, len_AC_list, problem):
         print(f"New AC: {username} - {problem}")
         print(f"{username} now has a total of {len_AC_list} AC")
-        if len_AC_list in balloon_list:
+        if len_AC_list in BALLOON_LIST:
             await self.sendBalloonMessage(f"`[{self.usernameToIndex[username]}] {username}` at {classroom[self.usernameToIndex[username]]} has reached {len_AC_list} AC by solving {problem}! - **Please send them a balloon!** (Assigned to <@{mention[self.usernameToIndex[username]]}>)")
 
     async def main(self):
