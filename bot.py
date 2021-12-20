@@ -8,7 +8,7 @@ import pandas as pd
 from config import *
 
 # dev mode gets data from local file
-dev = False
+dev = True
 
 df = pd.read_excel("teamInfo.xlsx")
 classroom = df['classroom']
